@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>day 2 of practice</title>
+    </head>
+    <body>
+        <p>laptop 899$<button onclick="
+            cart+=899;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>smartphone 599$<button onclick="
+            cart+=599;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>headphone 129$<button onclick="
+            cart+=129;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>smartwatch 199$<button onclick="
+            cart+=199;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>wireless earbuds 79$<button onclick="
+            cart+=79;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>gaming console 499$<button onclick="
+            cart+=499;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>mechanical keyboard 149$<button onclick="
+            cart+=149;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>monitor 299$<button onclick="
+            cart+=299;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>external hard drive 89$<button onclick="
+            cart+=89;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <p>bluetooth speaker 59$<button onclick="
+            cart+=59;
+            console.log(`cart: ${cart}`);
+            " >add</button></p>
+        <button onclick="
+        if(cart >= 500) {
+            discount = cart * 20 / 100;
+        } else if(cart >= 200) {
+            discount = cart * 10 / 100;
+        } else {
+            discount = 0;
+        }
+        cart -= discount; 
+        console.log(`price after discount: ${cart}`);
+        ">Done</button>
+
+        <script>
+            let cart = 0;
+            let discount = 0;
+
+        </script>
+    </body>
+</html>
