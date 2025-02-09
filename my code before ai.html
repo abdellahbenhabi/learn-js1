@@ -7,59 +7,167 @@
         <p>laptop 899$<button onclick="
             cart+=899;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity+=1;" >add</button>
+            <button onclick="
+            if (quantity>=1){
+                cart-=899;
+                quantity-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>smartphone 599$<button onclick="
             cart+=599;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity1+=1; " >add</button>
+             <button onclick="
+             if (quantity1>=1){
+                 cart-=599;
+                 quantity1-=1;}
+             else {
+                 cart=cart
+             }
+             console.log(`cart: ${cart}`);
+             ">remove</button></p>
         <p>headphone 129$<button onclick="
             cart+=129;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity2+=1;" >add</button>
+            <button onclick="
+            if (quantity2>=1){
+                cart-=129;
+                quantity2-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>smartwatch 199$<button onclick="
             cart+=199;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity3+=1;" >add</button>
+            <button onclick="
+            if (quantity3>=1){
+                cart-=199;
+                quantity3-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>wireless earbuds 79$<button onclick="
             cart+=79;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity4+=1;" >add</button>
+            <button onclick="
+            if (quantity4>=1){
+                cart-=79;
+                quantity4-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>gaming console 499$<button onclick="
             cart+=499;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity5+=1;" >add</button>
+            <button onclick="
+            if (quantity5>=1){
+                cart-=499;
+                quantity5-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>mechanical keyboard 149$<button onclick="
             cart+=149;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity6+=1;" >add</button>
+            <button onclick="
+            if (quantity6>=1){
+                cart-=149;
+                quantity6-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>monitor 299$<button onclick="
             cart+=299;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity7+=1;" >add</button>
+            <button onclick="
+            if (quantity7>=1){
+                cart-=299;
+                quantity7-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>external hard drive 89$<button onclick="
             cart+=89;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity8+=1;" >add</button>
+            <button onclick="
+            if (quantity8>=1){
+                cart-=89;
+                quantity8-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <p>bluetooth speaker 59$<button onclick="
             cart+=59;
             console.log(`cart: ${cart}`);
-            " >add</button></p>
+            quantity9+=1;" >add</button>
+            <button onclick="
+            if (quantity9>=1){
+                cart-=59;
+                quantity9-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
         <button onclick="
-        if(cart >= 500) {
-            discount = cart * 20 / 100;
-        } else if(cart >= 200) {
-            discount = cart * 10 / 100;
-        } else {
-            discount = 0;
-        }
-        cart -= discount; 
-        console.log(`price after discount: ${cart}`);
-        ">Done</button>
+       
+        applyDiscount()">Done</button>
+
+        <p>Total after discount: $<span id="total">0</span></p>
 
         <script>
             let cart = 0;
             let discount = 0;
+            let quantity = 0;
+            let quantity1 = 0;
+            let quantity2 = 0;
+            let quantity3 = 0;
+            let quantity4 = 0;
+            let quantity5 = 0;
+            let quantity6 = 0;
+            let quantity7 = 0;
+            let quantity8 = 0;
+            let quantity9 = 0;
 
+            function applyDiscount() {
+                if(cart >= 500) {
+                    discount = cart * 20 / 100;
+                } else if(cart >= 200) {
+                    discount = cart * 10 / 100;
+                } else {
+                    discount = 0;
+                }
+                cart -= discount; 
+                console.log(`price after discount: $${cart}`);
+            }
+//chatgbt suggest to create 2 fonction one for add item and one for the discount i made just one
+//line 51 wasn't mine i don't know even what it does
+//i forget line 66 
         </script>
     </body>
 </html>
