@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Guessing Game</title>
+</head>
+<body>
+
+<button onclick="startGame()">Start Game</button>
+
+<script>
+    function startGame() {
+        let randomNumber = Math.floor(Math.random() * 101);//i didn't know how to the calculation
+        console.log(randomNumber);
+
+        let guess = 0;
+        while (guess !== randomNumber) {
+            guess =parseInt(prompt('Enter your guess (between 0 and 100):'));//i had a problem here chatgbt fixed the problem and explain what parseInt do
+
+            if (guess > randomNumber) {
+                document.write("<p>Too high! Try again.</p>");
+            } else if (guess < randomNumber) {
+                document.write("<p>Too low! Try again.</p>");
+            } else if (guess === randomNumber) {
+                document.write("<p>Congratulations! You guessed the correct number!</p>");
+            } else {
+                document.write("<p>Please enter a valid number.</p>");
+            }
+        }
+    }//i still have the problem that the text too high too low doesn't appear intil u found the number when i asked chatgbt he suggest some problems i tried to fix it but nothing change then asked it to give me the full code of my version to see the difference but it doesn't work either so i kept my version of code 
+</script>
+
+</body>
+</html>
