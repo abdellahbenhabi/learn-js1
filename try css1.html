@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>day 2 of practice</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+    
+            .product-list {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr); 
+                gap: 10px;
+                max-width: 1000px;
+                margin: 0 auto;
+                
+            }
+    
+            .product {
+                border: 1px solid #000000;  
+            }
+    
+            button {
+                padding: 8px 15px;
+                border: 1px solid #000000;
+                cursor: pointer;
+                margin: 5px;
+            }
+    
+            .add-btn {
+                background-color: green;
+                color: white;
+            }
+    
+            .remove-btn {
+                background-color: red;
+                color: white;
+            }
+    
+        </style>
+    </head>
+    <body>
+        <div class="product-list">
+            <div class="product">Laptop dell - $899 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">Smartphone - $599 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">Headphones - $129 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">smart watch - $199 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">wireless earbuds - $79 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">gaming console - $499 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">mech keyboard - $149 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">office monitor - $299 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">external hard drive - $89 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+            <div class="product">bluetooth speaker - $59 <button class="add-btn">Add</button> <button class="remove-btn">Remove</button></div>
+        </div>
+    
+        
+        <p>laptop 899$<button onclick="
+            cart+=899;
+            console.log(`cart: ${cart}`);
+            quantity+=1;" >add</button>
+            <button onclick="
+            if (quantity>=1){
+                cart-=899;
+                quantity-=1;}
+            else {
+                cart=cart
+            }
+            
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>smartphone 599$<button onclick="
+            cart+=599;
+            console.log(`cart: ${cart}`);
+            quantity1+=1; " >add</button>
+             <button onclick="
+             if (quantity1>=1){
+                 cart-=599;
+                 quantity1-=1;}
+             else {
+                 cart=cart
+             }
+             console.log(`cart: ${cart}`);
+             ">remove</button></p>
+        <p>headphone 129$<button onclick="
+            cart+=129;
+            console.log(`cart: ${cart}`);
+            quantity2+=1;" >add</button>
+            <button onclick="
+            if (quantity2>=1){
+                cart-=129;
+                quantity2-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>smartwatch 199$<button onclick="
+            cart+=199;
+            console.log(`cart: ${cart}`);
+            quantity3+=1;" >add</button>
+            <button onclick="
+            if (quantity3>=1){
+                cart-=199;
+                quantity3-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>wireless earbuds 79$<button onclick="
+            cart+=79;
+            console.log(`cart: ${cart}`);
+            quantity4+=1;" >add</button>
+            <button onclick="
+            if (quantity4>=1){
+                cart-=79;
+                quantity4-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>gaming console 499$<button onclick="
+            cart+=499;
+            console.log(`cart: ${cart}`);
+            quantity5+=1;" >add</button>
+            <button onclick="
+            if (quantity5>=1){
+                cart-=499;
+                quantity5-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>mechanical keyboard 149$<button onclick="
+            cart+=149;
+            console.log(`cart: ${cart}`);
+            quantity6+=1;" >add</button>
+            <button onclick="
+            if (quantity6>=1){
+                cart-=149;
+                quantity6-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>monitor 299$<button onclick="
+            cart+=299;
+            console.log(`cart: ${cart}`);
+            quantity7+=1;" >add</button>
+            <button onclick="
+            if (quantity7>=1){
+                cart-=299;
+                quantity7-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>external hard drive 89$<button onclick="
+            cart+=89;
+            console.log(`cart: ${cart}`);
+            quantity8+=1;" >add</button>
+            <button onclick="
+            if (quantity8>=1){
+                cart-=89;
+                quantity8-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <p>bluetooth speaker 59$<button onclick="
+            cart+=59;
+            console.log(`cart: ${cart}`);
+            quantity9+=1;" >add</button>
+            <button onclick="
+            if (quantity9>=1){
+                cart-=59;
+                quantity9-=1;}
+            else {
+                cart=cart
+            }
+            console.log(`cart: ${cart}`);
+            ">remove</button></p>
+        <button onclick="
+       
+        applyDiscount()">Done</button>
+
+        <script>
+            let cart = 0;
+            let discount = 0;
+            let quantity = 0;
+            let quantity1 = 0;
+            let quantity2 = 0;
+            let quantity3 = 0;
+            let quantity4 = 0;
+            let quantity5 = 0;
+            let quantity6 = 0;
+            let quantity7 = 0;
+            let quantity8 = 0;
+            let quantity9 = 0;
+
+            function applyDiscount() {
+                if(cart >= 500) {
+                    discount = cart * 20 / 100;
+                } else if(cart >= 200) {
+                    discount = cart * 10 / 100;
+                } else {
+                    discount = 0;
+                }
+                cart -= discount; 
+                console.log(`price after discount: $${cart}`);
+            }
+
+        </script>
+    </body>
+</html>
