@@ -10,13 +10,30 @@
         nav a { color: black; margin: 0 15px; text-decoration: none; font-weight: bold; }
         main { width: 65%; margin: 50px 0 20px 20px; float: left; }
         section { background: #ffffff; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
-        aside { background: #fdf2cc; width: 30%; padding: 20px; border-radius: 5px; text-align: center; position: absolute; right: 20px; top: 200px; }
+        aside { background: #fdf2cc; width: 30%; padding: 20px; border-radius: 5px; text-align: center; position: absolute; right: 0px; top: 320px; }
         footer { background: #76c7a1; text-align: center; padding: 15px; font-weight: bold; clear: both; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         table, th, td { border: 1px solid black; padding: 5px; text-align: center; }
         .highlight { font-weight: bold; }
         .back-to-top { display: block; margin-top: 10px; text-align: right; }
         img { width: 80%; border-radius: 5px; }
+        @media (max-width: 800px) {
+    aside{
+        width: 20%; padding: 20px; border-radius: 5px; text-align: center; position: absolute; right: 0px; top: 320px; }
+    
+    img {
+        width: 8px; 
+        height: auto;
+    }
+
+    table {
+        font-size: 9px;
+    }
+
+    th, td {
+        padding: 4px; 
+    }
+}
     </style>
 </head>
 <body>
@@ -69,18 +86,13 @@
                     <td>13:00 - 15:00</td>
                     <td>
                         <strong>Sessions parallèles</strong>
-                        <div style="display: flex; font-weight: bold; margin-top: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
-                            <span style="flex: 1; text-align: center; border-right: 1px solid black; padding: 5px;">Session 1</span>
-                            <span style="flex: 1; text-align: center; border-right: 1px solid black; padding: 5px;">Session 2</span>
-                            <span style="flex: 1; text-align: center; border-right: 1px solid black; padding: 5px;">Session 3</span>
-                            <span style="flex: 1; text-align: center; padding: 5px;">Session 4</span>
-                        </div>
-                        <div style="display: flex; border-bottom: 1px solid black;">
-                            <span style="flex: 1; text-align: center; border-right: 1px solid black; padding: 5px;">Workshop sur la programmation PHP</span>
-                            <span style="flex: 1; text-align: center; border-right: 1px solid black; padding: 5px;">Workshop sur le Framework Laravel</span>
-                            <span style="flex: 1; text-align: center; border-right: 1px solid black; padding: 5px;">Workshop sur la Sécurité Web</span>
-                            <span style="flex: 1; text-align: center; padding: 5px;">Workshop sur le Framework Bootstrap</span>
-                        </div>
+                        <table>
+                            <tr><th>Session1</th><th>Session2</th><th>Session3</th><th>Session4</th></tr>
+                            <tr><td> Workshop sur la programmation PHP</td>
+                                <td>Workshop sur le Framework Laraval</td>
+                                <td>Workshop sur la Sécurité Web</td>
+                                <td>Workshop sur le Framework Bootstrap </td></tr></table>
+                            
                     </td>
                 </tr>
                 
