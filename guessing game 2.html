@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Guessing Game</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        input{
+            font-size: 22px;
+            box-shadow: 0px 5px 20px  rgb(99, 99, 98)
+        }
+        button{
+            font-size: 22px;
+            border-radius: 10px;
+        }
+        #message {
+        margin-top: 20px;
+        font-size: 22px;
+        font-weight: bold;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Guess the Number (0-100)</h1>
+<input type="number" id="userGuess" placeholder="Enter your guess" min="0" max="100">
+<button onclick="checkGuess()">Submit</button>
+<p id="message"></p>
+
+<script>
+    let randomNumber = Math.floor(Math.random() * 101); 
+    console.log(randomNumber);
+
+    function checkGuess() {
+        let guess = parseInt(document.getElementById("userGuess").value);
+
+        
+        if (guess > randomNumber) {
+            document.getElementById("message").innerHTML =" Too high! Try again." ;
+        } else if (guess < randomNumber) {
+            document.getElementById("message").innerHTML = " Too low! Try again.";
+        } else if (guess === randomNumber) {
+            document.getElementById("message").innerHTML = " Congratulations! You guessed it!";
+        } else {
+            document.getElementById("message").innerHTML =" Please enter a valid number between 0 and 100!" ;
+        }
+
+        document.getElementById("userGuess").value = "";
+    }
+</script>
+
+</body>
+</html>
