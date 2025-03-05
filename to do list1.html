@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body{
+            text-align: center;
+            font-family: Arial,;
+            font-size: 20px;
+        }
+        .done {
+            text-decoration: line-through; color: gray; }
+        
+        input{
+            font-size: 22px;
+            width: 200px;
+            box-shadow: 0px 5px 20px  rgb(99, 99, 98)
+        }
+        button {
+            margin: 5px;
+            font-size: 18px;
+            height: 35px;
+            width: 90px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .donebtn{
+            background-color: #28a745;
+        }
+        .donebtn:hover {
+            background-color: #218838;
+        }
+        .dltbtn{
+            background-color: #dc3545;
+        }
+        .dltbtn:hover {
+            background-color: #c82333;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <h1>to do list</h2>
+    <input type="text" id="taskinput" placeholder="Enter a task">
+    <button onclick="addTask()">Add Task</button>
+    <div id="taskList"></div>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        showTasks();
+
+        function addTask() {
+            let taskText = document.getElementById("taskinput").value.trim();
+            if (taskText === "") return;
+
+            tasks.push({ text: taskText, done: false });
+            saveAndShow();
+            document.getElementById("taskinput").value = "";
+        }
+
+        function showTasks() {
+            let taskList = document.getElementById("taskList");
+            taskList.innerHTML = ""; 
+
+            tasks.forEach((task, index) => {
+                let taskDiv = document.createElement("div");
+                taskDiv.innerHTML = `
+                    <span class="${task.done ? 'done' : ''}">${task.text}</span>
+                    <button class="donebtn" onclick="Done(${index})"> ✔</button>
+                    <button class="dltbtn" onclick="deleteTask(${index})"> ❌</button>
+                `;
+                taskList.appendChild(taskDiv);
+            });
+        }
+
+        function Done(index) {
+            tasks[index].done = !tasks[index].done;
+            saveAndShow();
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            saveAndShow();
+        }
+
+        function saveAndShow() {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            showTasks();
+        }
+    </script>
+
+</body>
+</html>
