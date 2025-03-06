@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <style>
         body{
             text-align: center;
-            font-family: Arial,;
+            font-family: Arial, sans-serif;
             font-size: 20px;
         }
         .done {
-            text-decoration: line-through; color: gray; }
-        
-        input{
+            text-decoration: line-through; 
+            color: gray; 
+        }
+        input {
             font-size: 22px;
             width: 200px;
-            box-shadow: 0px 5px 20px  rgb(99, 99, 98)
+            box-shadow: 0px 5px 20px rgb(99, 99, 98);
         }
         button {
             margin: 5px;
@@ -28,29 +27,34 @@
             border-radius: 5px;
             cursor: pointer;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            border: none;
         }
         button:hover {
             background-color: #0056b3;
         }
-        
-        .donebtn{
+        .donebtn {
             background-color: #28a745;
         }
         .donebtn:hover {
             background-color: #218838;
         }
-        .dltbtn{
+        .dltbtn {
             background-color: #dc3545;
         }
         .dltbtn:hover {
             background-color: #c82333;
         }
-       
+        .editbtn {
+            background-color: #ffc107;
+        }
+        .editbtn:hover {
+            background-color: #e0a800;
+        }
     </style>
 </head>
 <body>
 
-    <h1>to do list</h2>
+    <h1>To-Do List</h1>
     <input type="text" id="taskinput" placeholder="Enter a task">
     <button onclick="addTask()">Add Task</button>
     <div id="taskList"></div>
@@ -74,11 +78,21 @@
 
             tasks.forEach((task, index) => {
                 let taskDiv = document.createElement("div");
-                taskDiv.innerHTML = `
-                    <span class="${task.done ? 'done' : ''}">${task.text}</span>
-                    <button class="donebtn" onclick="Done(${index})"> ✔</button>
-                    <button class="dltbtn" onclick="deleteTask(${index})"> ❌</button>
-                `;
+
+                if (task.editing) {
+                    taskDiv.innerHTML = `
+                        <input type="text" id="editInput${index}" value="${task.text}">
+                        <button class="editbtn" onclick="saveEdit(${index})">Save</button>
+                    `;
+                } else {
+                    taskDiv.innerHTML = `
+                        <span class="${task.done ? 'done' : ''}">${task.text}</span>
+                        <button class="donebtn" onclick="Done(${index})">✔</button>
+                        <button class="editbtn" onclick="editTask(${index})">✏</button>
+                        <button class="dltbtn" onclick="deleteTask(${index})">❌</button>
+                    `;
+                }
+
                 taskList.appendChild(taskDiv);
             });
         }
@@ -90,6 +104,20 @@
 
         function deleteTask(index) {
             tasks.splice(index, 1);
+            saveAndShow();
+        }
+
+        function editTask(index) {
+            tasks[index].editing = true;
+            saveAndShow();
+        }
+
+        function saveEdit(index) {
+            let newText = document.getElementById(`editInput${index}`).value.trim();
+            if (newText !== "") {
+                tasks[index].text = newText;
+            }
+            delete tasks[index].editing;
             saveAndShow();
         }
 
