@@ -87,9 +87,9 @@
                 } else {
                     taskDiv.innerHTML = `
                         <span class="${task.done ? 'done' : ''}">${task.text}</span>
-                        <button class="donebtn" onclick="Done(${index})">✔</button>
-                        <button class="editbtn" onclick="editTask(${index})">✏</button>
-                        <button class="dltbtn" onclick="deleteTask(${index})">❌</button>
+                        <button class="donebtn" onclick="Done(${index})">done</button>
+                        <button class="editbtn" onclick="editTask(${index})">edit</button>
+                        <button class="dltbtn" onclick="deleteTask(${index})">delete</button>
                     `;
                 }
 
