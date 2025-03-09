@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Clock</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #clock {
+            font-size: 150px;
+            margin-bottom: 20px;
+        }
+        select {
+            font-size: 30px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <select id="format" onchange="updateClock()">
+        <option value="24">24-Hour</option>
+        <option value="12">12-Hour</option>
+    </select>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = String(now.getHours()).padStart(2, '0');//i did const instead of let, it worked but after adding AM and PM system it doesn't
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const format = document.getElementById('format').value;
+            let ampm = '';
+            
+            if (format === '12') {
+                if (hours < 12) {
+                    ampm = ' AM';
+                } else {
+                    ampm = ' PM';
+                }
+
+            hours = hours % 12;
+                if (hours === 0) {
+                    hours = 12; 
+                }
+            }
+
+            
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}${ampm}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
