@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>non repeating character</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find the First Non-Repeating Character</h1>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <button onclick="findFirstUnique()">Check</button>
+    <p id="result"></p>
+
+    <script>
+        function firstUniqueChar(str) {
+            const charCount = {};
+
+            for (let char of str) {
+                charCount[char] = (charCount[char] || 0) + 1;
+            }
+
+            for (let char of str) {
+                if (charCount[char] === 1) {
+                    return char;
+                }
+            }
+
+            return null;
+        }
+
+        function findFirstUnique() {
+            const inputStr = document.getElementById("inputString").value.trim();
+            const result = firstUniqueChar(inputStr);
+            document.getElementById("result").innerText = result ? `First Unique Character: ${result}` : "No unique character found";
+        }
+    </script>
+
+</body>
+</html>
+
