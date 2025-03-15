@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sum of figits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>sum of digits until one digit</h1>
+    <input type="number" id="numberinput" placeholder="Enter a number">
+    <button onclick="calculatesum()">Calculate</button>
+    <p id="result">Result:</p>
+
+    <script>
+        function sumdigit(n) {
+            if (n < 10) return n; 
+
+            let sum = 0;
+            while (n > 0) { 
+                sum += n % 10; 
+                n = Math.floor(n / 10);
+            }
+
+            return sumdigit(sum); 
+        }
+
+        function calculatesum() {
+            let num = document.getElementById("numberinput").value; 
+            if (num === "") return; 
+
+            let result = sumdigit(num); 
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
