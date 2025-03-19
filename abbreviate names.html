@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>abbreviate names</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>abbreviate mames</h2>
+        <input type="text" id="names" placeholder="Enter names (separated by comma )">
+        <button onclick="abbreviatenames()">Abbreviate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function abbreviatenames() {
+            let input = document.getElementById("names").value.split(",");//i learn split
+            
+            let result = input.map(name => {
+                let parts = name.trim().split(" ");
+                return parts.length > 1 ? parts[0] + " " + parts[1][0] + "." : parts[0];//i got to much confused in this part i couldn;t do it wiyhout chatgbt but after i get it it look more simple now
+            });
+
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+    </script>
+
+</body>
+</html>
