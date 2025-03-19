@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            margin: auto;
+            border: 1px solid black;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px black;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Square Numbers</h2>
+        <input type="text" id="numbers" placeholder="Enter numbers (separated by comma )">
+        <button onclick="squareNumbers()">Calculate</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function squareNumbers() {
+            let input = document.getElementById("numbers").value.split(",").map(Number);
+            let result = input.map(num => num * num);
+            document.getElementById("result").innerText = "Result: " + result;
+        }
+    </script>
+
+</body>
+</html>
