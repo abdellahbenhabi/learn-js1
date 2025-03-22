@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product filter</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .product-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 10px;
+        }
+        .product {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            width: 150px;
+            text-align: center;
+            cursor:pointer ;
+        }
+    </style>
+</head>
+<body>
+    <h1>filter products</h1>
+
+    <select id="category" onchange="filterproducts()">
+        <option value="all">All</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Clothing</option>
+    </select>
+
+    <div id="product-list" class="product-container"></div>
+
+    <script>
+        let products = [
+            { name: "Laptop", category: "electronics" },
+            { name: "T-Shirt", category: "clothing" },
+            { name: "Phone", category: "electronics" },
+            { name: "Jeans", category: "clothing" }
+        ];
+
+        function filterproducts() {
+            let selectedcategory = document.getElementById("category").value;
+            let filtered = products.filter(p => selectedcategory === "all" || p.category === selectedcategory);
+
+            document.getElementById("product-list").innerHTML = 
+                filtered.map(p => `<div class="product">${p.name}</div>`).join("");
+        }
+
+        filterproducts();
+    </script>
+</body>
+</html>
