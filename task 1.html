@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task 1</title>
+    <style>
+        .high-score {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Scores</h1>
+    <div id="studentlist"></div>
+
+    <script>
+        let students = [
+            { name: "Alice", score: 75 },
+            { name: "Bob", score: 85 },
+            { name: "Charlie", score: 90 },
+            { name: "David", score: 60 },
+            { name: "Eva", score: 95 }
+        ];
+        let studentlist = document.getElementById("studentlist");
+
+        students.forEach(function(student) {
+            let listitem = document.createElement("div");
+            listitem.textContent = `${student.name}: ${student.score}`;
+
+            if (student.score >= 80) {
+                listitem.classList.add("high-score");
+            }
+
+            studentlist.appendChild(listitem);//plus to for each i learned appendChild
+    
+        });
+    </script>
+
+</body>
+</html>
