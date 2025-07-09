@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>30-Day Work Tracker (24-Hour Format)</title>
   <style>
     body {
@@ -49,80 +49,75 @@
   <script>
     const tableBody = document.getElementById("workTable");
     const totalDiv = document.getElementById("total");
-  
+
     function createRow(day) {
       const row = document.createElement("tr");
-  
+
       const dayCell = document.createElement("td");
       dayCell.textContent = "Day " + day;
-  
+
       const inCell = document.createElement("td");
       const inInput = document.createElement("input");
-      inInput.type = "text";
-      inInput.placeholder = "hh:mm";
-      inInput.inputMode = "numeric";
-      inInput.pattern = "\\d{1,2}:\\d{2}";
-      inInput.addEventListener("beforeinput", e => {
-        if (!/[\d:]/.test(e.data) && e.inputType === "insertText") {
-          e.preventDefault();
-        }
-      });
-  
       const outCell = document.createElement("td");
       const outInput = document.createElement("input");
-      outInput.type = "text";
-      outInput.placeholder = "hh:mm";
-      outInput.inputMode = "numeric";
-      outInput.pattern = "\\d{1,2}:\\d{2}";
-      outInput.addEventListener("beforeinput", e => {
-        if (!/[\d:]/.test(e.data) && e.inputType === "insertText") {
-          e.preventDefault();
-        }
-      });
-  
-      const hoursCell = document.createElement("td");
-      hoursCell.textContent = "0h 0min";
-  
+
       [inInput, outInput].forEach(input => {
+        input.type = "text";
+        input.placeholder = "hh:mm";
+        input.inputMode = "numeric";
+
         input.addEventListener("input", () => {
-          const [inHours, inMinutes] = parseTime(inInput.value);
-          const [outHours, outMinutes] = parseTime(outInput.value);
-  
-          if (inHours !== null && outHours !== null) {
-            let start = inHours * 60 + inMinutes;
-            let end = outHours * 60 + outMinutes;
-  
-            let diff = end - start;
-            if (diff < 0) diff += 24 * 60;
-  
-            let h = Math.floor(diff / 60);
-            let m = diff % 60;
-            hoursCell.textContent = `${h}h ${m}min`;
-          } else {
-            hoursCell.textContent = "0h 0min";
+          let value = input.value.replace(/\D/g, ""); // Remove all non-digits
+          if (value.length > 4) value = value.slice(0, 4);
+          if (value.length >= 3) {
+            value = value.slice(0, 2) + ":" + value.slice(2);
           }
-          calculateTotal();
+          input.value = value;
+          calculateWorkedTime();
         });
       });
-  
+
+      const hoursCell = document.createElement("td");
+      hoursCell.textContent = "0h 0min";
+
+      function calculateWorkedTime() {
+        const [inHours, inMinutes] = parseTime(inInput.value);
+        const [outHours, outMinutes] = parseTime(outInput.value);
+
+        if (inHours !== null && outHours !== null) {
+          let start = inHours * 60 + inMinutes;
+          let end = outHours * 60 + outMinutes;
+
+          let diff = end - start;
+          if (diff < 0) diff += 24 * 60;
+
+          let h = Math.floor(diff / 60);
+          let m = diff % 60;
+          hoursCell.textContent = `${h}h ${m}min`;
+        } else {
+          hoursCell.textContent = "0h 0min";
+        }
+        calculateTotal();
+      }
+
       inCell.appendChild(inInput);
       outCell.appendChild(outInput);
-  
+
       row.appendChild(dayCell);
       row.appendChild(inCell);
       row.appendChild(outCell);
       row.appendChild(hoursCell);
-  
+
       return row;
     }
-  
+
     function parseTime(timeStr) {
       const parts = timeStr.split(":");
       if (parts.length !== 2) return [null, null];
-  
+
       const hours = parseInt(parts[0], 10);
       const minutes = parseInt(parts[1], 10);
-  
+
       if (
         isNaN(hours) || isNaN(minutes) ||
         hours < 0 || hours > 23 ||
@@ -130,10 +125,10 @@
       ) {
         return [null, null];
       }
-  
+
       return [hours, minutes];
     }
-  
+
     function calculateTotal() {
       let totalMinutes = 0;
       document.querySelectorAll("tbody tr").forEach(row => {
@@ -143,17 +138,16 @@
           totalMinutes += parseInt(match[1]) * 60 + parseInt(match[2]);
         }
       });
-  
+
       const h = Math.floor(totalMinutes / 60);
       const m = totalMinutes % 60;
       totalDiv.textContent = `Total Worked Time: ${h}h ${m}min`;
     }
-  
+
     // Create 60 rows
     for (let i = 1; i <= 60; i++) {
       tableBody.appendChild(createRow(i));
     }
   </script>
-  
 </body>
 </html>
