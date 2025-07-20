@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="number" placeholder="enter a number">
+    <button onclick="calculate_the_sum()">calculate </button>
+    <p id="result">result=</p>
+
+    <script>
+        function sum_of_numbers(num){
+            if (num<10){
+                return num ;
+            }
+            let sum =0; 
+            while (num>0) {// here i got stuck i didn't know how to calculate the sum that why i checked my last code even with that i had to search it for better understanding
+            sum += num % 10; 
+                num = Math.floor(num / 10);
+                
+            }
+                
+            return sum_of_numbers(sum); 
+        }
+
+
+        function calculate_the_sum(){
+            const num = document.getElementById("number").value;
+            const result = sum_of_numbers(num);
+            document.getElementById("result").innerText=result;
+        }
+    </script>
+    
+</body>
+</html>
