@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first repeated character</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 500px;
+          margin: 0;
+        }
+    
+        h1 {
+          margin-bottom: 20px;
+          color: gray;
+        }
+    
+        input {
+          padding: 10px;
+          width: 250px;
+          font-size: 16px;
+          margin: 10px 0;
+          border: 1px solid ghostwhite;
+          border-radius: 6px;
+        }
+    
+        button {
+          padding: 10px 20px;
+          font-size: 16px;
+          background-color: cadetblue;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        button:hover {
+          background-color: blue;
+        }
+    
+        #result {
+          margin-top: 20px;
+          font-size: 18px;
+          color: #444;
+        }
+      </style>
+</head>
+<body>
+    <input type="text" id="text" placeholder="enter a text">
+    <button onclick="find()">check</button>
+    <p id="result"></p>
+
+    <script>
+        function findrepeatedchar(text1){
+            const charCount = {};
+
+            for (let char of text1) {
+                charCount[char] = (charCount[char] || 0) + 1;
+            }
+
+            for (let char of text1) {
+                if (charCount[char] >= 2) {
+                    return char;
+                }
+            }
+
+            return null;
+        }
+        function find(){
+            const text1=document.getElementById("text").value;
+            const result=findrepeatedchar(text1);
+            document.getElementById("result").innerText = result ? `First repeated Character: ${result}` : "No unique character found";
+
+        }
+    </script>
+</body>
+</html>
