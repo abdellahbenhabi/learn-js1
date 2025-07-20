@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>colorPicker 2</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 500px;
+          margin: 0;
+        }
+        p{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <input type="color" id="colorPicker">
+    <p>choose this text Color</p>
+    <input type="color" id="textcolorpicker">
+
+
+    <script>
+        document.getElementById("colorPicker").addEventListener("input", function(event) {
+            const selectedColor= event.target.value;//here i forgot .target.value but i knew there was somthing messing so i go to my first color picker 
+            document.body.style.backgroundColor=selectedColor;});
+
+        document.getElementById("textcolorpicker").addEventListener("input", function(event){
+            const textcolor= event.target.value;
+            document.body.style.color=textcolor;
+
+        });
+    </script>
+</body>
+</html>
