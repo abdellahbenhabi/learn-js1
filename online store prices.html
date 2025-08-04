@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store Prices</title>
+    <style>
+        body {
+            background: #f7f7f7;
+            color: #333;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .product-list {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: left;
+        }
+
+        .product-list p {
+            font-size: 18px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button-wrapper {
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 16px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🛒 Online Store</h1>
+
+    <div class="product-list">
+        <p><span>T-shirt:</span> <span id="price1"></span></p>
+        <p><span>Jeans:</span> <span id="price2"></span></p>
+        <p><span>Basket:</span> <span id="price3"></span></p>
+        <p><span>Dress:</span> <span id="price4"></span></p>
+    </div>
+
+    <div class="button-wrapper">
+        <p>Press the button to convert prices from <strong>USD</strong> to <strong>DA</strong>:</p>
+        <button onclick="convert()">Convert</button>
+    </div>
+
+    <script>
+        const price = ["25$", "50$", "75$", "100$"];
+        
+        document.getElementById("price1").textContent = price[0];
+        document.getElementById("price2").textContent = price[1];
+        document.getElementById("price3").textContent = price[2];
+        document.getElementById("price4").textContent = price[3];
+
+        function convert() {
+            const result = price.map(prices => {
+                const usd = parseFloat(prices);
+                const da = usd * 255;
+                return da + " DA";
+            });
+
+            document.getElementById("price1").textContent = result[0];
+            document.getElementById("price2").textContent = result[1];
+            document.getElementById("price3").textContent = result[2];
+            document.getElementById("price4").textContent = result[3];
+        }
+    </script>
+
+</body>
+</html>
