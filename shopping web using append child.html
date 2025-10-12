@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Shopping Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    ul {
+      margin-top: 20px;
+    }
+
+    li {
+      background: white;
+      margin: 8px auto;
+      padding: 10px 20px;
+      width: 300px;
+      border-radius: 8px;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .delete-btn {
+      background: #e74c3c;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .delete-btn:hover {
+      background: #c0392b;
+    }
+
+    input {
+      padding: 10px;
+      width: 180px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    #price {
+      width: 100px;
+    }
+
+    button.add-btn {
+      padding: 10px 20px;
+      background: #4CAF50;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button.add-btn:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Shopping List</h1>
+
+  <div>
+    <input type="text" id="product-name" placeholder="Product name">
+    <input type="number" id="price" placeholder="Price">
+    <button class="add-btn" onclick="addProduct()">Add Product</button>
+  </div>
+
+  <ul id="product-list">
+    <li>
+      <span>Smartphone - $600</span>
+      <button class="delete-btn" onclick="deleteProduct(this)">Delete</button>
+    </li>
+    <li>
+      <span>Laptop - $1200</span>
+      <button class="delete-btn" onclick="deleteProduct(this)">Delete</button>
+    </li>
+  </ul>
+
+  <script>
+    function addProduct() {
+      const name = document.getElementById("product-name");
+      const price = document.getElementById("price");
+      const productName = name.value.trim();
+      const productPrice = price.value.trim();
+
+      if (productName === "" || productPrice === "") {
+        alert("Please enter both a product name and a price!");
+        return;
+      }
+
+      const li = document.createElement("li");
+
+      const text = document.createElement("span");
+      text.textContent = `${productName} - $${productPrice}`;
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.className = "delete-btn";
+      deleteBtn.onclick = function() {
+        deleteProduct(deleteBtn);
+      };
+
+      li.appendChild(text);
+      li.appendChild(deleteBtn);
+
+      document.getElementById("product-list").appendChild(li);
+
+      nameInput.value = "";
+      priceInput.value = "";
+    }
+
+    function deleteProduct(button) {
+      const li = button.parentElement;
+      li.remove();
+    }
+  </script>
+
+</body>
+</html>
