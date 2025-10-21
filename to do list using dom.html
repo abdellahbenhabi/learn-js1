@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list using dom</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 100px;
+        background-color: hsl(216, 4%, 77%);
+    }
+
+    input {
+        padding: 5px;
+        width: 200px;
+    }
+
+    button {
+        padding: 5px 10px;
+        background-color: blue;
+        color: white;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: hsl(189, 100%, 58%);
+        color: black;
+
+    }
+
+    ul {
+        width: 300px;
+        list-style: none;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    li {
+        justify-content: space-between;
+        display: flex;
+        margin: 5px;
+        padding: 5px 10px;
+        gap: 10px;
+    }
+    li button:nth-child(1) {
+        background-color: red;
+        color: white;
+    }
+    li button:nth-child(1):hover {
+        background-color: rgb(255, 83, 71);
+        color: black;
+    }
+
+    li button:nth-child(2) {
+        background-color: rgb(197, 250, 5);
+        color: white;
+    }
+    li button:nth-child(2):hover{
+        background-color: rgb(255, 230, 89);
+        color: black;
+}
+
+
+</style>
+
+</head>
+<body>
+    <h1><strong>to do list</strong></h1>
+    <input type="text" id="task" placeholder="enter the task u want to add" >
+    <button id="addbtn">add task</button>
+    <ul id="list">
+    </ul>
+
+    <script>
+        let taskinput=document.getElementById("task")
+        let addbutton=document.getElementById("addbtn")
+        let tasklist=document.getElementById("list")
+
+        addbutton.addEventListener("click",function(){
+            let task=taskinput.value.trim();
+                if (task==""){
+                    alert("enter a task please")}
+                else{
+                    let newtask=document.createElement("li")
+                    newtask.textContent=task
+                    tasklist.appendChild(newtask)
+                    let dlttask=document.createElement("button")
+                    dlttask.textContent="delete"
+                    newtask.appendChild(dlttask)
+                    dlttask.addEventListener("click",function(){
+                        tasklist.removeChild(newtask)
+                    })
+                    let edittask=document.createElement("button")
+                    edittask.textContent="edit"
+                    newtask.appendChild(edittask)
+                    edittask.addEventListener("click",function(){
+                        let newText = prompt("Edit your task:", newtask.firstChild.textContent);//here i got a problm this line didn't work as i wanted so i asked chatgbt about the prblm and it was first child i did like that newtask.textContent) but after i edit somthing the buttons disappeared
+                        newtask.firstChild.textContent = newText.trim();
+                    })
+                }
+
+        }) 
+    </script>                       
+</body>
+</html>
