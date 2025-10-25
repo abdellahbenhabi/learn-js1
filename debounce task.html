@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Search & Scroll Test</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #search {
+      width: 300px;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+     div {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    
+  </style>
+</head>
+<body>
+
+  
+  <input type="text" id="search" placeholder="Type to search...">
+    <div>
+    <div>apple</div>
+    <div>apricot</div>
+    <div>avocado</div>
+    <div>banana</div>
+    <div>blackberry</div>
+    <div>blueberry</div>
+    <div>cantaloupe</div>
+    <div>cherry</div>
+    <div>clementine</div>
+    <div>coconut</div>
+    <div>cranberry</div>
+    <div>date</div>
+    <div>dragonfruit</div>
+    <div>durian</div>
+    <div>elderberry</div>
+    <div>fig</div>
+    <div>goji berry</div>
+    <div>gooseberry</div>
+    <div>grape</div>
+    <div>grapefruit</div>
+    <div>guava</div>
+    <div>honeydew</div>
+    <div>jackfruit</div>
+    <div>kiwi</div>
+    <div>kumquat</div>
+    <div>lemon</div>
+    <div>lime</div>
+    <div>lychee</div>
+    <div>mango</div>
+    <div>mangosteen</div>
+    <div>melon</div>
+    <div>mulberry</div>
+    <div>nectarine</div>
+    <div>olive</div>
+    <div>orange</div>
+    <div>papaya</div>
+    <div>passionfruit</div>
+    <div>peach</div>
+    <div>pear</div>
+    <div>persimmon</div>
+    <div>pineapple</div>
+    <div>plum</div>
+    <div>pomegranate</div>
+    <div>raspberry</div>
+    <div>red currant</div>
+    <div>starfruit</div>
+    <div>strawberry</div>
+    <div>tangerine</div>
+    <div>ugli fruit</div>
+    <div>watermelon</div>
+
+    </div>
+    <script>
+        let searchfruit=document.getElementById("search");
+        let fruits =document.querySelectorAll("body > div > div");//that new to me i know just the query selector id but since i forget to write the id in html chatgbt give me 2 option write id as usual and this so i tried this
+
+        function search(){
+            fruits.forEach (function(fruit){
+                if(fruit.textContent.includes(searchfruit.value)){
+                    fruit.style.display=""}
+                
+                else{
+                    fruit.style.display="none"}})//i did some mistakes in this function 
+        } 
+        const debouncedSearch = debounce(search, 1000);
+        searchfruit.addEventListener("input", debouncedSearch);
+
+        function debounce(func, delay){
+            let timer;
+            return function () {
+            clearTimeout(timer);
+            timer = setTimeout(func, delay);
+            };
+        }
+    </script>
+</body>
+</html>
