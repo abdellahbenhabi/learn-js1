@@ -102,7 +102,26 @@
             clearTimeout(timer);
             timer = setTimeout(func, delay);
             };
+
         }
+        function throttle(func, delay){
+            let time;
+            return function(...args){
+                if (!time){
+                    func.apply(this,args)
+                    function reset() {
+                        time = null;
+                    }
+                    time = setTimeout(reset, delay);
+
+                }
+            }
+        }
+        function handleScroll() {
+        console.log(scrollY);
+        }
+        document.addEventListener("scroll",throttle(handleScroll,2000));
+
     </script>
 </body>
 </html>
