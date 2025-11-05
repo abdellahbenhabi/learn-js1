@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Grocery Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      width: 150px;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100px;
+      height: 100px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .total {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Grocery Store</h1>
+    <div class="cart">
+        Cart: <span id="cart-count">0</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="products" id="products">
+    </div>
+    <div class="total">
+      Total: $<span id="total-price">0.00</span>
+    </div>
+  </main>
+
+  <script>
+    const products = [
+      { name: "Apple", price: 1, img: "https://i5.walmartimages.com/seo/Fresh-Red-Delicious-Apple-Each_7320e63a-de46-4a16-9b8c-526e15219a12_3.e557c1ad9973e1f76f512b34950243a3.jpeg" },
+      { name: "Banana", price: 0.5, img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Banana-Single.jpg/960px-Banana-Single.jpg" },
+      { name: "Milk", price: 2, img: "https://media.istockphoto.com/id/535489242/fr/photo/verre-de-lait-dans-le-verre-sur-le-fond-de-nature.jpg?s=612x612&w=0&k=20&c=_nst47U5497yYX8R4mnXZPoZYdmA8-ep3bwYkbrAj7A=" },
+      { name: "Bread", price: 1.5, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBVlZD3DrjHNSDJuW_3t2HSBuLbCPqTKnncg&s" },
+    ];
+
+    let cartcount = 0;
+    let totalprice = 0;
+
+    const productsContainer = document.getElementById("products");
+    const cartCount = document.getElementById("cart-count");
+    const totalPrice = document.getElementById("total-price");
+
+    products.forEach((product, index) => {
+      const productDiv = document.createElement("div");
+      productDiv.classList.add("product");
+      productDiv.innerHTML = `
+        <img src="${product.img}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>$${product.price}</p>
+        <button onclick="addToCart(${index})">Add to Cart</button>
+      `;
+      productsContainer.appendChild(productDiv);
+    });
+
+    function addToCart(index) {
+      cartcount++;
+      totalprice += products[index].price;
+      cartCount.textContent = cartcount;
+      totalPrice.textContent = totalprice;
+    }
+  </script>
+</body>
+</html>
