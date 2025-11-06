@@ -48,6 +48,9 @@
       font-size: 1.2em;
       font-weight: bold;
     }
+    .product {
+  position: absolute;
+}
   </style>
 </head>
 <body>
@@ -98,7 +101,54 @@
       totalprice += products[index].price;
       cartCount.textContent = cartcount;
       totalPrice.textContent = totalprice;
+
     }
+
+    let cursor ={
+        x:null,
+        y:null
+      }
+
+      let product ={
+        dom:null,
+        x:null,
+        y:null
+      }
+
+    document.addEventListener('mousedown' , (event) =>{
+        if (event.target.classList.contains('product')){
+            cursor = {
+                x : event.clientX,
+                y : event.clientY
+            }
+            product = {
+                dom: event.target,
+                x : event.target.getBoundingClientRect().left,
+                y : event.target.getBoundingClientRect().top
+            }
+        }
+      })
+
+    document.addEventListener('mousemove' , (event) =>{
+        if(product.dom == null ) return;
+        let currentcursor = {
+            x : event.clientX,
+            y : event.clientY
+        }
+    
+    let distance = {
+        x : currentcursor.x - cursor.x,
+        y : currentcursor.y - cursor.y
+    }
+    product.dom.style.left = (product.x + distance.x) + 'px'
+    product.dom.style.top = (product.y + distance.y) + 'px'
+    product.dom.style.cursor='grab';
+})
+    document.addEventListener('mouseup' , () =>{
+        if(product.dom == null ) return;
+        product.dom.style.cursor='auto';
+        product.dom = null;
+    })
   </script>
 </body>
 </html>
