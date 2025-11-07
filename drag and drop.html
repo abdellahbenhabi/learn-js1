@@ -48,9 +48,8 @@
       font-size: 1.2em;
       font-weight: bold;
     }
-    .product {
-  position: absolute;
-}
+  /*  .product {
+  position: absolute;first i cannot control any product until i add this line but after i figured that they r all one under one because they start at the same position x,y so chatgbt gives me an alternative way to drag the product from js */
   </style>
 </head>
 <body>
@@ -127,6 +126,8 @@
                 x : event.target.getBoundingClientRect().left,
                 y : event.target.getBoundingClientRect().top
             }
+            product.dom.style.position = 'absolute';
+            product.dom.style.zIndex = 1000;//those 2 lines
         }
       })
 
