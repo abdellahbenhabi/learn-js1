@@ -115,8 +115,9 @@
         y:null
       }
 
-    document.addEventListener('mousedown' , (event) =>{
+    document.addEventListener('pointerdown' , (event) =>{
         if (event.target.classList.contains('product')){
+            event.target.setPointerCapture(event.pointerId);
             cursor = {
                 x : event.clientX,
                 y : event.clientY
@@ -129,7 +130,7 @@
         }
       })
 
-    document.addEventListener('mousemove' , (event) =>{
+    document.addEventListener('pointermove' , (event) =>{
         if(product.dom == null ) return;
         let currentcursor = {
             x : event.clientX,
@@ -144,9 +145,10 @@
     product.dom.style.top = (product.y + distance.y) + 'px'
     product.dom.style.cursor='grab';
 })
-    document.addEventListener('mouseup' , () =>{
+    document.addEventListener('pointerup' , () =>{
         if(product.dom == null ) return;
         product.dom.style.cursor='auto';
+        product.dom.releasePointerCapture(event.pointerId);
         product.dom = null;
     })
   </script>
